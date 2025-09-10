@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pozdeploy
+  name: pozdeploy
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: pozdeploy
+  template:
+    metadata:
+      labels:
+        app: pozdeploy
+    spec:
+      containers:
+          - image: httpd:alpine3.18
+            name: httpd
+  strategy:
+    type: Recreate 
